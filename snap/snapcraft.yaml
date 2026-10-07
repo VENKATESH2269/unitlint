@@ -1,0 +1,25 @@
+name: unitlint
+base: core24
+version: '0.1.0'
+summary: Friendly linter for systemd service unit files
+description: |
+  unitlint checks systemd .service files for missing or wrong directives,
+  common mistakes (such as shell syntax in ExecStart), deprecated options
+  and missing security hardening, and explains how to fix each problem.
+
+grade: devel
+confinement: strict
+
+plugs:
+  # Lets the linter read unit files from the user's home directory.
+  home:
+
+apps:
+  unitlint:
+    command: bin/unitlint
+    plugs: [home]
+
+parts:
+  unitlint:
+    plugin: python
+    source: .

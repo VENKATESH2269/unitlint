@@ -1,0 +1,9 @@
+[Unit]
+Description=Demo web app with several mistakes
+Wants=network-online.target
+
+[Service]
+ExecStart=bin/app --serve | tee /tmp/app.log
+Restar=always
+MemoryLimit=1G
+StandardOutput=syslog
